@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>ActionItemModel.qml</file>
+    </qresource>
+</RCC>
