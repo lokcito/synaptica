@@ -1,7 +1,9 @@
-import QtQuick 2.9
+import QtQuick 2.0
 import QtQuick.Window 2.2
+import QtQuick.Controls 1.1
 
 Window {
+    id: mainWindow
     visible: true
     width: 640
     height: 480
@@ -10,6 +12,8 @@ Window {
     Rectangle {
         anchors.fill: parent
         color: "#3a4055"
+/*
+    Example
         Component {
              id: actionItemDelegate
              Item {
@@ -20,7 +24,7 @@ Window {
                  }
              }
          }
-
+*/
         ListView {
             id: list
             width: 180; height: 200
@@ -29,15 +33,18 @@ Window {
                 id: actionItemsDelegate
                 Rectangle {
                     id: wrapper
-                    width: 180
+                    width: 100
                     height: 50
-                    color: ListView.isCurrentItem ? "#21be2b" : "#4a526c"
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    color: ListView.isCurrentItem ? "#21be2b" : "#424961"
+                    anchors.left: parent.left
                     Text {
                         id: contactInfo
-                        width: 100
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
                         wrapMode: Text.Wrap
-                        text: '<b>Name:</b> ' + name + '<div><b>Number:</b> ' + number + '</div>'
-                        color: wrapper.ListView.isCurrentItem ? "white" : "black"
+                        text: name
+                        color: wrapper.ListView.isCurrentItem ? "white" : "#7680a2"
                     }
                     radius: 5
                     MouseArea {
@@ -46,11 +53,14 @@ Window {
                     }
                 }
             }
+            spacing: 2
             model: ActionItemModel {}
             delegate: actionItemsDelegate
             //highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
             focus: true
-            onCurrentItemChanged: console.log(model.get(list.currentIndex).name + ' selected')
+            onCurrentItemChanged: {
+                clipboardManage.toClipboard(model.get(list.currentIndex).name)
+            }
         }
     }
 }
