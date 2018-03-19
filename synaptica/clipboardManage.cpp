@@ -1,9 +1,6 @@
 #include <QtDebug>
-#include <QFileInfo>
 #include <QClipboard>
 #include <QApplication>
-#include <QDateTime>
-#include <stdexcept>
 
 #include "clipboardManage.h"
 

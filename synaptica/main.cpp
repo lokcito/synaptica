@@ -13,11 +13,11 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
-    ClipboardManage *d = new ClipboardManage();
+    ClipboardManage *clipboardInstance = new ClipboardManage();
 
     QQmlApplicationEngine engine;
     QQmlContext *ctx = engine.rootContext();
-    ctx->setContextProperty("clipboardManage", d);
+    ctx->setContextProperty("clipboardManage", clipboardInstance);
 
 //    qDebug() << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
 //    qDebug() << QApplication::clipboard()->text();
